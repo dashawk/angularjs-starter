@@ -1,0 +1,30 @@
+{
+	"name": "Angular JS Starter Kit",
+	"version": "0.1.0",
+	"authors": [
+		"Jason Panugaling <jmpanugaling@gmail.com>"
+	],
+	"description": "AngularJS Starter Kit using RequireJS with GruntJS",
+	"keywords": [
+		"angularjs-starter",
+		"angular-requirejs",
+		"angularjs-build-grunt"
+	],
+	"license": "MIT",
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"vendor",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"angular": "*",
+		"angular-route": "*",
+		"requirejs": "*",
+		"jquery": "*",
+		"bootstrap": "*"
+	}
+}
