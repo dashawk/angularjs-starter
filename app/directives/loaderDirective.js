@@ -9,7 +9,7 @@
 				restrict: 'EA',
 				transclude: true,
 				replace: true,
-				templateUrl: 'app/directives/templates/loader.html'
+				templateUrl: 'app/views/directives/loader.html'
 			};
 		});
 	});
