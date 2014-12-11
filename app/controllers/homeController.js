@@ -1,7 +1,7 @@
 (function (define) {
 	'use strict';
 
-	define([ 'Module', 'Route' ], function (Module) {
+	define([ 'Module', 'route' ], function (Module) {
 		var Home = Module.create([ 'ngRoute' ], appName + '.Home');
 
 		Home.config(function ($routeProvider) {
