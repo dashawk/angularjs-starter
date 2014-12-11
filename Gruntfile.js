@@ -20,46 +20,57 @@ module.exports = function(grunt) {
 					optimize: 'uglify2',
 					removeCombined: true,
 					findNestedDependencies: true,
-					optimizeCss: 'standard'
+					optimizeCss: 'standard',
+					done: function(done, output) {
+						var duplicates = require('rjs-build-analysis').duplicates(output);
+
+						if (duplicates.length > 0) {
+							grunt.log.subhead('Duplicates found in requirejs build:');
+							grunt.log.warn(duplicates);
+							return done(new Error('r.js built duplicate modules, please check the excludes option.'));
+						}
+
+						done();
+					}
 				}
 			}
 		},
 
 		// Environment Switcher
-//		replace: {
-//			production: {
-//				options: {
-//					patterns: [
-//						{ json: grunt.file.readJSON('./config/production/production.json') }
-//					]
-//				},
-//
-//				files: [
-//					{
-//						expand: true,
-//						flatten: true,
-//						src: ['./config/module.js'],
-//						dest: 'scripts/app/'
-//					}
-//				]
-//			},
-//			local: {
-//				options: {
-//					patterns: [
-//						{ json: grunt.file.readJSON('./config/development/development.json') }
-//					]
-//				},
-//
-//				files: [
-//					{
-//						expand: true,
-//						flatten: true,
-//						src: ['./config/module.js'],
-//						dest: 'scripts/app/'
-//					}
-//				]
-//			}
-//		},
+		//		replace: {
+		//			production: {
+		//				options: {
+		//					patterns: [
+		//						{ json: grunt.file.readJSON('./config/production/production.json') }
+		//					]
+		//				},
+		//
+		//				files: [
+		//					{
+		//						expand: true,
+		//						flatten: true,
+		//						src: ['./config/module.js'],
+		//						dest: 'scripts/app/'
+		//					}
+		//				]
+		//			},
+		//			local: {
+		//				options: {
+		//					patterns: [
+		//						{ json: grunt.file.readJSON('./config/development/development.json') }
+		//					]
+		//				},
+		//
+		//				files: [
+		//					{
+		//						expand: true,
+		//						flatten: true,
+		//						src: ['./config/module.js'],
+		//						dest: 'scripts/app/'
+		//					}
+		//				]
+		//			}
+		//		},
 
 		// Clean files after build
 		shell: {
@@ -67,7 +78,7 @@ module.exports = function(grunt) {
 				command: [
 					'cd dist/',
 					'rm -rf config/ scripts/app/ ^node',
-					'rm -rf .bowerrc BaseGruntfile.js build.txt bower.json package.json readme.md',
+					'rm -rf .bowerrc build.txt bower.json package.json readme.md',
 					'cd scripts/libs/',
 					'shopt -s extglob',
 					'rm -rf !(requirejs)'	// Remove all libraries exept requirejs

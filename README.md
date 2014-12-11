@@ -16,3 +16,7 @@ To get started, use `bower` to install the dependencies
 ```cli
 bower install
 ```
+
+Build
+=====
+Use `grunt --force` to build the project. I am using `--force` to ignore errors in the js files.
