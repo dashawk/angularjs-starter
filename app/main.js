@@ -1,15 +1,35 @@
 (function () {
 	'use strict';
 
-	require(['config'], function (Config) {
+	require.config({
+		baseUrl: 'vendor',
+		paths: {
+			jquery: 'jquery/dist/jquery',
+			bootstrap: 'bootstrap/dist/js/bootstrap',
+			angular: 'angular/angular',
+			route: 'angular-route/angular-route',
 
-		// Load RequireJS Config
-		require.config(Config);
+			Module: '../app/module',
+			app: '../app/app'
+		},
 
-		// Start Main App
-		require([ 'App' ], function (App) {
-			new App.init();
-		});
+		shim: {
+			angular: [ 'jquery' ],
+			bootstrap: [ 'jquery' ],
+			Module: [ 'angular' ],
+			route: [ 'angular' ]
+		}
 	});
+
+	// Start Main App
+	require([ 'app' ], function (App) {
+		new App.init();
+	});
+//	require(['config'], function (Config) {
+//
+//		// Load RequireJS Config
+//		require.config(Config);
+//
+//	});
 
 }());
