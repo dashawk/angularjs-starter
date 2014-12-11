@@ -4,7 +4,7 @@
 	define(
 		[
 			'Module',
-			'Route',
+			'route',
 
 			// Controllers
 			'../app/controllers/homeController',
@@ -14,7 +14,6 @@
 		],
 
 		function (Module) {
-
 			var App = Module.create([
 				'ngRoute',
 
