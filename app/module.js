@@ -1,7 +1,7 @@
 (function (define) {
 	'use strict';
 
-	define([ 'Angular' ], function () {
+	define([ 'angular' ], function () {
 		return {
 			create: function (dependencies, moduleName) {
 				var App = angular.module(moduleName, dependencies);
